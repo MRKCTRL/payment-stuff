@@ -21,14 +21,26 @@
             <div class="form-group">
                 <label for="">Full name</label>
                 <input type="text" name="name" class="form-control">
+                @if($errors->has('name'))
+                <span class="text-danger">{{$error->first('name')}}</span>
+
+                @endif
             </div>
             <div class="form-group">
                 <label for="">E-mail</label>
                 <input type="text" name="email" class="form-control">
+                @if($errors->has('email'))
+                <span class="text-danger">{{$error->first('email')}}</span>
+
+                @endif
             </div>
             <div class="form-group">
                 <label for="">Password</label>
                 <input type="text" name="password" class="form-control">
+                @if($errors->has('password'))
+                <span class="text-danger">{{$error->first('password')}}</span>
+
+                @endif
             </div>
             <hr>
             <div class="form-group">
