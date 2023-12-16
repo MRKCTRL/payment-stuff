@@ -31,4 +31,8 @@ class userController extends Controller
         ]);
         return back();
     }
+    public function login()
+    {
+        return view('user.login');
+    }
 }

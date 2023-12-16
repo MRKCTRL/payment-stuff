@@ -31,3 +31,5 @@ Route::get('/', function () {
 
 Route::get('/register/seek', [userController:: class, 'createSeeker'])->name('create.seeker');
 Route::post('/register/seek', [userController:: class, 'storeSeeker'])->name('store.seeker');
+
+Route::get('/login', [userController::class, 'login'])->name('login');
