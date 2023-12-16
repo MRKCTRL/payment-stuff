@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\contactController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 // use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testContoller;
 use App\Http\Controllers\userController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +35,8 @@ Route::get('/register/seek', [userController:: class, 'createSeeker'])->name('cr
 Route::post('/register/seek', [userController:: class, 'storeSeeker'])->name('store.seeker');
 
 Route::get('/login', [userController::class, 'login'])->name('login');
+Route::post('/login', [userController::class,'postLogin'])->name('login.post');
+
+
+Route::post('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
