@@ -4,6 +4,8 @@ use App\Http\Controllers\contactController;
 use Illuminate\Support\Facades\Route;
 // use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testContoller;
+use App\Http\Controllers\userController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,5 +22,11 @@ Route::get('/', function () {
 });
 
 // Route::get('/users',[testContoller::class, 'index']);
-Route::get('/contact', [contactController::class, 'index']);
-Route::get('/contact/store', [contactController::class, 'store']);
+// Route::get('/contact', [contactController::class, 'index']);
+// Route::get('/contact/store', [contactController::class, 'store']);
+
+// Route::get('/users', function() {
+//     return view('user.index');
+// });
+
+Route::get('/register/seek', [userController:: class, 'createSeeker']);
