@@ -16,6 +16,7 @@
 <div class="col-md-6">
     <div class="card">
         <div class-header>register</div>
+        <form action="{{route('store.seeker')}}" method="post"@csrf
         <div class="card-body">
             <div class="form-group">
                 <label for="">Full name</label>
