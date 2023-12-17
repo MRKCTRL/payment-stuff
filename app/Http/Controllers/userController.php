@@ -40,6 +40,8 @@ class userController extends Controller
             'user_type'=> self::JOB_SEEK,
             
         ]);
+
+        Auth::loginn($user);
         $user->SendEmailVerifcationNotification();
 
         // \Carbon\Carbon::parse($date)->format('Y-m-d');
@@ -57,6 +59,7 @@ class userController extends Controller
             'user_type'=> self::JOB_POSTER,
              'user_trial' => now()->addWeek()
         ]);
+        Auth::login($user);
         $user->SendEmailVerifcationNotification();
         
         return redirect()->route('login')->with('successMessage', 'Your account was created');
