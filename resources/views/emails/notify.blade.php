@@ -1,10 +1,16 @@
 <x-mail::message>
 # Introduction
 
-The body of your message.
 
+Congratulationals, You are now a Premuim user
+{{-- The body of your message. --}}
+<p>Your Purchase transaction</p>
+<p>Plan: {{$plan}}</p>
+<p>Your Plan ends on :{{billingDebit}}</p>
 <x-mail::button :url="''">
-Button Text
+Jobs
+{{-- Button Text --}}
+
 </x-mail::button>
 
 Thanks,<br>

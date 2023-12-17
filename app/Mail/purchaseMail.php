@@ -9,16 +9,19 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class purchaseMail extends Mailable
+class purchaseMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
+    public $plan;
+    public $billingDebit;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($plan, $billingDebit)
     {
-        //
+        $this->plan = $plan;
+        $this->billingDebit = billingDebit;
     }
 
     /**
@@ -27,7 +30,7 @@ class purchaseMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Purchase Mail',
+            subject: 'Purchase confirmation',
         );
     }
 
