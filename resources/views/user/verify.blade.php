@@ -7,7 +7,10 @@
 
         </div>
         <div class="card-body">
-            <p>Your Account hasnt been verified. please check your email to Verify your account</p>
+            <p>Your Account hasnt been verified. please check your email to Verify your account
+
+                <a href="{{route('resend.email')}}">Resend verification email</a>
+            </p>
         </div>
     </div>
 

@@ -53,10 +53,11 @@ Route::post('/login', [userController::class,'postLogin'])->name('login.post');
 
 Route::post('/logout', [userController::class, 'logout'])->name('logout');
 
-Route::post('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-// ->middleware('auth');
+// Route::post('/dashboard', [DashboardController::class, 'index'])
+// ->middleware('auth')
+// ->name('dashboard');
 
 Route::get('/dashboard', [DashboardController::class,'index'])
 ->middleware('verified')
 ->name('dashboard');
-Route::get('verify', [DashboardController::class, 'verify'])->name('verification.notice');
+Route::get('resend/verificaction/email', [DashboardController::class, 'resend'])->name('resend.email'); 
