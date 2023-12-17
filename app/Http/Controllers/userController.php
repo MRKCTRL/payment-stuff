@@ -40,12 +40,14 @@ class userController extends Controller
             'user_type'=> self::JOB_SEEK,
             
         ]);
+        
 
         Auth::loginn($user);
         $user->SendEmailVerifcationNotification();
+        return response()->json('success');
 
         // \Carbon\Carbon::parse($date)->format('Y-m-d');
-        return redirect()->route('login')->with('successMessage', 'Your account was created');
+        // return redirect()->route('login')->with('successMessage', 'Your account was created');
         // back();
     }
  public function storeEmloyer( RegisterationFormRequest  $request)
