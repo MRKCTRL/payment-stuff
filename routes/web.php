@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\contactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\subscriptionController;
 use Illuminate\Support\Facades\Route;
 // use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testContoller;
@@ -61,3 +62,17 @@ Route::get('/dashboard', [DashboardController::class,'index'])
 ->middleware('verified')
 ->name('dashboard');
 Route::get('resend/verificaction/email', [DashboardController::class, 'resend'])->name('resend.email'); 
+
+Route::get('subscribe', [subscriptionController::class, 'subscribe'])->middleware('auth');
+Route::get('pay/weekly', [subscriptionController::class, 'initPayment'])
+->name('pay.weekly')
+->middleware('auth');
+
+
+Route::get('pay/weekly', [subscriptionController::class, 'initPayment'])
+->name('pay.monthly')
+->middleware('auth');
+
+Route::get('pay/weekly', [subscriptionController::class, 'initPayment'])
+->name('pay.yearly')
+->middleware('auth');
