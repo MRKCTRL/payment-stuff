@@ -5,9 +5,12 @@
 <div class="container" mt-5> 
 <div class="row justify-content-center">
 <div class="col-md-8">
+    
+    @include ("message")
+   
     <div class="card shadow-lg">
         <div class-header>login</div>
-        <form action="{{route('login.post')}}" method="post"@csrf
+        <form action="{{route('login.post')}}" method="post">@csrf</form>
         <div class="card-body">
             <div class="form-group">
                 <label for="">Full name</label>

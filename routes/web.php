@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 // use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testContoller;
 use App\Http\Controllers\userController;
+use Illuminate\Auth\Events\Logout;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -34,9 +35,15 @@ Route::get('/', function () {
 Route::get('/register/seek', [userController:: class, 'createSeeker'])->name('create.seeker');
 Route::post('/register/seek', [userController:: class, 'storeSeeker'])->name('store.seeker');
 
+Route::get('/register/employer', [userController:: class, 'createEmployer'])->name('create.employer');
+Route::post('/register/employer', [userController:: class, 'storeEmployer'])->name('store.employer');
+
 Route::get('/login', [userController::class, 'login'])->name('login');
 Route::post('/login', [userController::class,'postLogin'])->name('login.post');
 
 
+Route::post('/logout', [userController::class, 'logot'])->name('logout');
+
 Route::post('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+// ->middleware('auth');
 

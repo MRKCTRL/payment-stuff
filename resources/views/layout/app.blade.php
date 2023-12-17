@@ -1,3 +1,7 @@
+@extends('layout.app')
+
+@section('content') 
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,13 +25,30 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav" ms-auto>
         <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="{{route{'login'}}}">login</a>
+          @if(!Auth::check())
+        <a class="nav-link" href="{{route('login')}}}">login</a>
+      
         <a class="nav-link" href="{{route('create.seeker')}}">Job seeker</a>
         <a class="nav-link" aria-disabled="true">Employer</a>
       </div>
+      @endif
+      @if(Auth::check())
+      <a class="nav-link" id="logout" href="{{route('create.employer')}}">Employer</a>
+        <a class="nav-link" aria-disabled="true">logout</a>
+      </div>
+      @endif
+      <form id="form-logout" action="{{route('logout')}}" method="post">@csrf </form>
     </div>
   </div>
 </nav>
 @yield('content')
+
+
+<script> let logout = document.getElementById('logout');
+let form = document.getElementById('form-logout');
+logout.addEventListner('click', function {
+  form.submit()
+})</script>
+
 </body>
 </html>
