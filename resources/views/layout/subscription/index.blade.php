@@ -51,7 +51,7 @@
         <h5 class="card-title">Yearly - Zar 740</h5>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-        <a href="{{route('pay.yearly')}}" class="card-link"></a>
+        <a href="{{route('pay.yearlyarlymthly and weekly ')}}" class="card-link"></a>
          <button>Pay</button>
       </div>
     </div>
