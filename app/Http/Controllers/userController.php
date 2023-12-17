@@ -32,7 +32,7 @@ class userController extends Controller
             // 'password' => ['required']
 
         // ]);
-        User::create([
+         $user = User::create([
             // 'name'=> $request->get('name')
             'name'=> request('name'),
             'email'=> request('email'),
@@ -40,6 +40,7 @@ class userController extends Controller
             'user_type'=> self::JOB_SEEK,
             
         ]);
+        $user->SendEmailVerifcationNotification();
 
         // \Carbon\Carbon::parse($date)->format('Y-m-d');
         return redirect()->route('login')->with('successMessage', 'Your account was created');
@@ -48,7 +49,7 @@ class userController extends Controller
  public function storeEmloyer( RegisterationFormRequest  $request)
         {
             
-        User::create([
+        $user = User::create([
             // 'name'=> $request->get('name')
             'name'=> request('name'),
             'email'=> request('email'),
@@ -56,6 +57,8 @@ class userController extends Controller
             'user_type'=> self::JOB_POSTER,
              'user_trial' => now()->addWeek()
         ]);
+        $user->SendEmailVerifcationNotification();
+        
         return redirect()->route('login')->with('successMessage', 'Your account was created');
     }
 

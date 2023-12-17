@@ -8,6 +8,7 @@ use App\Http\Controllers\testContoller;
 use App\Http\Controllers\userController;
 use Illuminate\Auth\Events\Logout;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,14 @@ Route::get('/', function () {
 // Route::get('/users', function() {
 //     return view('user.index');
 // });
+
+
+ 
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+ 
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::get('/register/seek', [userController:: class, 'createSeeker'])->name('create.seeker');
 Route::post('/register/seek', [userController:: class, 'storeSeeker'])->name('store.seeker');
