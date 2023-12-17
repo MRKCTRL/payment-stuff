@@ -62,7 +62,8 @@ class userController extends Controller
         Auth::login($user);
         $user->SendEmailVerifcationNotification();
         
-        return redirect()->route('login')->with('successMessage', 'Your account was created');
+        return response()->json('success');
+        // return redirect()->route('login')->with('successMessage', 'Your account was created');
     }
 
     public function login()
