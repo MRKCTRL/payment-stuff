@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\contactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\postJobController;
 use App\Http\Controllers\subscriptionController;
 use Illuminate\Support\Facades\Route;
 // use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testContoller;
 use App\Http\Controllers\userController;
+use App\Http\Middleware\isEmployer;
+use App\Http\Middleware\isPremiumUser;
 use Illuminate\Auth\Events\Logout;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -63,16 +66,15 @@ Route::get('/dashboard', [DashboardController::class,'index'])
 ->name('dashboard');
 Route::get('resend/verificaction/email', [DashboardController::class, 'resend'])->name('resend.email'); 
 
-Route::get('subscribe', [subscriptionController::class, 'subscribe'])->middleware('auth');
-Route::get('pay/weekly', [subscriptionController::class, 'initPayment'])
-->name('pay.weekly')
-->middleware('auth');
+Route::get('subscribe', [subscriptionController::class, 'subscribe'])->name('subscribe');
+Route::get('pay/weekly', [subscriptionController::class, 'initPayment'])->name('pay.weekly');
+Route::get('pay/montlyy', [subscriptionController::class, 'initPayment'])->name('pay.monthly');
+Route::get('pay/yearly', [subscriptionController::class, 'initPayment'])->name('pay.yearly');
+
+Route::get('successful/payment', [subscriptionController::class, 'successfulPayment'])->name('successful.Payment');
 
 
-Route::get('pay/weekly', [subscriptionController::class, 'initPayment'])
-->name('pay.monthly')
-->middleware('auth');
 
-Route::get('pay/weekly', [subscriptionController::class, 'initPayment'])
-->name('pay.yearly')
-->middleware('auth');
+Route::get('payment/cancellation', [subscriptionController::class, 'paymentCancellation'])->name('payment.cancellation');
+
+Route::get('job/creation', [postJobController::class, 'creation'])->name('job.creation')->middleware(isPremiumUser::class);

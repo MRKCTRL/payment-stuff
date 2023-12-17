@@ -30,11 +30,12 @@ class DashboardController extends Controller
     {
         $user =Auth::user();
 
-        if($user->hasVerifiedEmail()) {
+        if($user->hasVerifiedEmail)
+        {
             return redirect()->route('home')->with('success', 'Your email was verified');
         }
 
-        $user->sendEmailVerificationNotification();
+        $user->sendEmailVerificationNotification;
         return back()->with('success', 'Verification has been sent check your inbox, spam and junk folder');
     }
 }

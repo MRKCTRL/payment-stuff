@@ -3,7 +3,10 @@
 @section('content')
 
 <div class="container" mt-5>
-    <div class=row>
+    <div class=row justify-content-center>
+      #if(Session::has('message'))
+      <div class="alert alert-warning"></div>
+      @endif
         <div class="col-md-4">
     col1<div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">

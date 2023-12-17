@@ -4,11 +4,26 @@
 
 <div class="container mt-5">
   hello, {{ auth()->user()->name }}
+  @if(! auth()->user()billingDebit)
   @if(Auth::check() && auth()->user()->user_type == 'employer')
-  <p>Your Trial {{now()->format('Y-m-d') > auth()->user()->user_trial ? 'was expired': 'will expire'}} on {{auth()->user()->user_trial}}</p>
+  <p>Your Trial {{now()->format('Y-m-d') > auth()->user()->user_trial ? 'has expired': 'will expire'}} on {{auth()->user()->user_trial}}</p>
   @endif
+  @endif
+
+   @if(Auth::check() && auth()->user()->user_type == 'employer')
+  <p>Your Trial {{now()->format('Y-m-d') > auth()->user()->billingDebit ? 'has expired': 'will expire'}} on {{auth()->user()->billingDebit}}</p>
+  @endif
+
+
 <div class="row justify-content-center">
 
+
+    @if(Session::has('success'))
+    <div class="alert alert-success">{{Session::get('success')}}</div>
+    @endif
+
+    if(Session::has('error'))
+    <div class="alert alert-danger">{{Session::get('error')}}</div>
 
     {{-- {{ auth()->user()->email }} --}}
 <div class="col-md-3">

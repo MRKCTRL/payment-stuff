@@ -25,6 +25,10 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav" ms-auto>
         <a class="nav-link active" aria-current="page" href="#">Home</a>
+         <div class="navbar-nav" ms-auto>
+        <a class="nav-link active" aria-current="page" href="{{route('dashboard')}}">Dashboard</a>
+         <div class="navbar-nav" ms-auto>
+        <a class="nav-link active" aria-current="page" href="{{route('subscribe')}}">Subsribe</a>
           @if(!Auth::check())
         <a class="nav-link" href="{{route('login')}}}">login</a>
       

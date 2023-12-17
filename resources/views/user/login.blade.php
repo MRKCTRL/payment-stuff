@@ -6,7 +6,7 @@
 <div class="row justify-content-center">
 <div class="col-md-8">
     
-    @include ("message")
+@include("message")
    
     <div class="card shadow-lg">
         <div class-header>login</div>
