@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('application_close_date');
             $table->timestamps();
         });
-    }
+    } 
 
     /**
      * Reverse the migrations.
