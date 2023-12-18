@@ -10,6 +10,10 @@
     <h1>Post a job</h1>
     <form action="" method="POST">@csrf
         <div class="form-group">
+            <label for="feature_image">Feature Image</label>
+            <input type="file" name="feature_image" id="feature_image" class="form-control">
+        </div>
+        <div class="form-group">
             <label for="title">Title</label>
             <input type="text" name="title" id="title" class="form-control">
         </div>
@@ -47,7 +51,7 @@
         </div>
         <div class="form-group">
             <label for="date">Application close date</label>
-            <input type="date" name="datee" id="date" class="form-control">
+            <input type="date" name="date" id="idatepicker" class="form-control">
         </div>
         <div class="form-group mt-4">
             <button type="submit" class="btn btn-success">Post Job</button>
