@@ -13,7 +13,8 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            @include('layout.admin.body')
+            {{-- @include('layout.admin.body') --}}
+            @yield('content')
             <!-- End of Main Content -->
 
             <!-- Footer -->

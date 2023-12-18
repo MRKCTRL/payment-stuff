@@ -26,8 +26,10 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
+                        {{-- <h6 class="collapse-header">Logout Screens:</h6> --}}
+                        <h6 class="collaose-header">a class="collapse-item" id="form-logout" href="{{route('logout')}}">Logout</a></h6>
+                        <a class="collapse-item" id="form-logout" href="{{route('logout')}}">Logout</a>
+                        <form  method="post" action="{{route('logout')}}">@csrf</form>
                         <a class="collapse-item" href="register.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
@@ -93,8 +95,13 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <a class="collapse-item" href="{{route('subscribe')}}">Subscription</a>
                         <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
             </li>
+            <script> let logout = document.getElementById('logout');
+                let form = document.getElementById('form-logout');
+                logout.addEventListner('click', function {
+                  form.submit()
+                })</script>

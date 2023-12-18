@@ -26,7 +26,10 @@ class subscriptionController extends Controller
     //
     public function __construct()
     {
-     $this->middleware(['auth', isEmployer::class, doNotAllowUserToMakePayment::class]);
+     $this->middleware(['auth', isEmployer::class]);
+    $this->middleware(['auth', doNotAllowUserToMakePayment::class])->except('subscribe');
+
+
     }
 
     public function subscribe()
@@ -115,7 +118,7 @@ class subscriptionController extends Controller
         try {
              Mail::to(auth()->user())->queue(new purchaseMail($plan, $billingDebit));
         }catch (\Exception) {
-            return response()->json($e)
+            return response()->json($e);
         }
 
        
