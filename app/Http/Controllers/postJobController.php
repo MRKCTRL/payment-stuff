@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\jobEditFormRequest;
 use App\Http\Requests\jobPostFormRequest;
 use App\Models\Listing;
 use App\Post\JobPost;
@@ -32,4 +33,14 @@ public function store(jobPostFormRequest $request)
     {
         return view('job.edit',compact('listing'));
     }
+    public function update($id, jobEditFormRequest $request)
+    {
+        if($request->hasFile('feature_image')) {
+            $featureImage = $request->file('feature_image')->store('images', 'public');
+            Listing::find($id)->update(['feature' => $featureImage]);
+        }
+        Listing::find($id)->update($request->except('feature_image'));
+        return back()->with('success', 'Your job post has been successful updated');
+    }
+
 } 

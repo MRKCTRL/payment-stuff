@@ -80,4 +80,5 @@ Route::get('payment/cancellation', [subscriptionController::class, 'paymentCance
 Route::get('job/creation', [postJobController::class, 'creation'])->name('job.creation')->middleware(isPremiumUser::class);
 
 Route::post('job/store', [postJobController::class, 'store'])->name('job.store')->middleware(isPremiumUser::class);
-Route::get('job/{id}/edit', [postJobController::class, 'edit'])->name('job.edit')->middleware(isPremiumUser::class);
+Route::get('job/{listing}/edit', [postJobController::class, 'edit'])->name('job.edit')->middleware(isPremiumUser::class);
+Route::put('job/{if}/edit', [postJobController::class, 'update'])->name('job.update')->middleware(isPremiumUser::class);

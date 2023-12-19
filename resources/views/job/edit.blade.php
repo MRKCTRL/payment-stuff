@@ -7,10 +7,13 @@
 <div class="col-md-8">
 
 
-    <h1>Post a job</h1>
-    {{$listing}}
-    <form action="#
-    " method="POST">@csrf
+    <h1>Update a job</h1>
+    @if(Session::has('success'))
+
+    <div class="alert alert-success">{{Session::get('success')}}</div>
+    @endif
+    <form action="{{route('job.update',[$listing->id])}}" enctype="multipart/form-data" method="POST">@csrf
+        @method('PUT')
         <div class="form-group">
             <label for="feature_image">Feature Image</label>
             <input type="file" name="feature_image" id="feature_image" class="form-control">
@@ -89,7 +92,7 @@
             @endif
         </div>
         <div class="form-group mt-4">
-            <button type="submit" class="btn btn-success">Post Job</button>
+            <button type="submit" class="btn btn-success">Update Job</button>
         </div>
             
     </form>
