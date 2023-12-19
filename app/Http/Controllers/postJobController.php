@@ -25,7 +25,11 @@ public function store(jobPostFormRequest $request)
 {
     // dd
 
-        $this->job->store($request);
+        $this->job->store($request); 
         return back();
     } 
+    public function edit(Listing $listing)
+    {
+        return view('job.edit',compact('listing'));
+    }
 } 
