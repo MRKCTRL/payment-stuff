@@ -12,6 +12,9 @@
         <div class="form-group">
             <label for="feature_image">Feature Image</label>
             <input type="file" name="feature_image" id="feature_image" class="form-control">
+             @if($error->has('feature_image'))
+            <div class="error">{{$error->first('feature_image')}}</div>
+            @endif
         </div>
         <div class="form-group">
             <label for="title">Title</label>
@@ -64,6 +67,13 @@
         </div>
          @if($error->has('address'))
             <div class="error">{{$error->first('address')}}</div>
+            @endif
+            <div class="form-group">
+            <label for="salary">Salary</label>
+            <input type="text" name="salary" id="salary" class="form-control">
+        </div>
+         @if($error->has('salary'))
+            <div class="error">{{$error->first('salary')}}</div>
             @endif
         <div class="form-group">
             <label for="date">Application close date</label>
