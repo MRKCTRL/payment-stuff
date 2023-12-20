@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 // use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testContoller;
 use App\Http\Controllers\userController;
+use App\Http\Middleware\checkAuth;
 use App\Http\Middleware\isEmployer;
 use App\Http\Middleware\isPremiumUser;
 use Illuminate\Auth\Events\Logout;
@@ -26,7 +27,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 // Route::get('/users',[testContoller::class, 'index']);
@@ -45,18 +46,22 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     return redirect('/login');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::get('/register/seek', [userController:: class, 'createSeeker'])->name('create.seeker');
+Route::get('/register/seek', [userController:: class, 'createSeeker'])->name('create.seeker')->middleware(checkAuth::class);
 Route::post('/register/seek', [userController:: class, 'storeSeeker'])->name('store.seeker');
 
-Route::get('/register/employer', [userController:: class, 'createEmployer'])->name('create.employer');
+Route::get('/register/employer', [userController:: class, 'createEmployer'])->name('create.employer')->middleware(checkAuth::class);
 Route::post('/register/employer', [userController:: class, 'storeEmployer'])->name('store.employer');
 
 Route::get('/login', [userController::class, 'login'])->name('login');
-Route::post('/login', [userController::class,'postLogin'])->name('login.post');
+Route::post('/login', [userController::class,'postLogin'])->name('login.post')->name('login')->middleware(checkAuth::class);
 
 
 Route::post('/logout', [userController::class, 'logout'])->name('logout');
 
+Route::get('user/profile/seeker', [userController::class, 'seekerProfile'])->name('seeker.profile')->middleware('auth');
+
+Route::get('user/profile', [userController::class, 'profile'])->name('user.profile')->middleware('auth');
+Route::post('user/profile', [userController::class, 'update'])->name('user.update.profile')->middleware('auth');
 // Route::post('/dashboard', [DashboardController::class, 'index'])
 // ->middleware('auth')
 // ->name('dashboard');

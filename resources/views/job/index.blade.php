@@ -4,6 +4,10 @@
 <div class="container mt-5">
 <h2>All jobs</h2>
 <div class="row justify-content-center">
+    @if(Session::has('success'))
+
+    <div class="alert alert-success">{{Session::get('success')}}</div>
+    @endif
 
     <div class="card mb-4">
         <div class="card-header">

@@ -18,7 +18,7 @@ class postJobController extends Controller
     {
         $this->job = $job;
         $this->midddleware('auth');
-        $this->middleware(isPremiumUser::class->only(['create', 'store']));
+        $this->middleware(isPremiumUser::class)->only(['create', 'store']);
     }
     public function index()
     {

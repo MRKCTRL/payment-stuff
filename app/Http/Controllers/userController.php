@@ -91,4 +91,26 @@ public function logout()
     
     return redirect()->route('login');
 }
+
+public function  profile()
+{
+    return view('profile.index');
+}
+public function seekerProfile()
+{
+    return view('seeker.profile');
+}
+
+public function update(Request $request)
+{
+ if($request->hasFile('profile_pic')) {
+           $imagepath = $request->file('profilr_pic')->store('profile', 'public');
+
+            User::find(auth()->user->id)->update(['profile_pic' => $imagepath]);
+
+        }
+        User::find(auth()->user()->id)->update($request->except('profile_pic'));
+
+        return back()->with('success',  'Your profile has been updated');
+}
 }

@@ -26,6 +26,11 @@
       <div class="navbar-nav" ms-auto>
         <a class="nav-link active" aria-current="page" href="#">Home</a>
          <div class="navbar-nav" ms-auto>
+          @if(Auth::check())
+           <div class="navbar-nav" ms-auto>
+        <a class="nav-link active" aria-current="page" href="{{route('seeker.profile')}}">Profile</a>
+         <div class="navbar-nav" ms-auto>
+          @endif
        
           @if(!Auth::check())
         <a class="nav-link" href="{{route('login')}}}">login</a>
