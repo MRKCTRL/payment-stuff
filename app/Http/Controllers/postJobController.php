@@ -17,6 +17,11 @@ class postJobController extends Controller
     {
         $this->job = $job;
     }
+    public function index()
+    {
+        $jobs = Listing::where('user_id', auth()->user()->id)->get();
+    return view('job.index', compact('jobs'));
+    }
     public function create()
     //
     {
@@ -35,11 +40,8 @@ public function store(jobPostFormRequest $request)
     }
     public function update($id, jobEditFormRequest $request)
     {
-        if($request->hasFile('feature_image')) {
-            $featureImage = $request->file('feature_image')->store('images', 'public');
-            Listing::find($id)->update(['feature' => $featureImage]);
-        }
-        Listing::find($id)->update($request->except('feature_image'));
+       $this->job->updatePost($id , $request);
+
         return back()->with('success', 'Your job post has been successful updated');
     }
 

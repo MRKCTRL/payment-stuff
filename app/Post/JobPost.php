@@ -4,6 +4,7 @@ namespace App\Post;
 
 use App\Models\Listing;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class JobPost {
 
@@ -12,10 +13,13 @@ class JobPost {
     {
       $this->listing = $listing;
     }
-    public function store($data)
+    public function getImagePath(Request $data){
+      return $data->file('feature_image')->store('images', 'public');
+    }
+
+    public function store(Request $data)
     {
-        $featureImage = $data->file('feature_image');
-        $imagePath = $data->file('feature_image')->store('images', 'public');
+        $imagePath = $this->getImagePath(($data));
         // $post = new Listing;
         $this->listing->feature_image = $imagePath;
         $this-> listing->user_id = auth()->user()->id;
@@ -28,5 +32,13 @@ class JobPost {
         $this->listing->salary = $data['salary'];
         $this->listing->slug = Str::slug($data['title']).'.'. Str::uuid();
         $this->listing->save();
+    }
+    public function updatePost(int $id, Request $data) :void
+    {
+       if($data->hasFile('feature_image')) {
+           
+            $this->listing->find($id)->update(['feature' => $this->getImagePath($data)]);
+        }
+        $this->listing->find($id)->update($data->except('feature_image'));
     }
 }

@@ -23,7 +23,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Dashboard Interface
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -31,14 +31,14 @@
                 <a class="nav-link collapsed" href="{{route('job.create')}}"  data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <a class="nav-link" href="layout-sidenav-light.html"></a>
+                    <a class="nav-link" href="{{route('job.index')}}"></a>
                     <span>Job</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <a class="collapse-item" href="buttons.html">Yout Job</a>
+                        <a class="collapse-item" href="{{route('job.create')}}">Create Job listing</a>
                     </div>
                 </div>
             </li>
