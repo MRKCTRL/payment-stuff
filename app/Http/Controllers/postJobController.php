@@ -16,6 +16,7 @@ class postJobController extends Controller
     public function __construct(JobPost $job)
     {
         $this->job = $job;
+        $this->midddleware('auth');
     }
     public function index()
     {
@@ -43,6 +44,10 @@ public function store(jobPostFormRequest $request)
        $this->job->updatePost($id , $request);
 
         return back()->with('success', 'Your job post has been successful updated');
+    }
+    public function destroy($id){
+        Listing::find($id)->destroy();
+        return back()->with('success', 'Your Job has been successfully deleted');
     }
 
 } 
