@@ -77,11 +77,11 @@ Route::get('successful/payment', [subscriptionController::class, 'successfulPaym
 
 Route::get('payment/cancellation', [subscriptionController::class, 'paymentCancellation'])->name('payment.cancellation');
 
-Route::get('job/creation', [postJobController::class, 'creation'])->name('job.creation')->middleware(isPremiumUser::class);
+Route::get('job/creation', [postJobController::class, 'creation'])->name('job.creation');
 
-Route::post('job/store', [postJobController::class, 'store'])->name('job.store')->middleware(isPremiumUser::class);
-Route::get('job/{listing}/edit', [postJobController::class, 'edit'])->name('job.edit')->middleware(isPremiumUser::class);
-Route::put('job/{if}/edit', [postJobController::class, 'update'])->name('job.update')->middleware(isPremiumUser::class);
-Route::get('job', [postJobController::class, 'index'])->name('job.index')->middleware(isPremiumUser::class);
+Route::post('job/store', [postJobController::class, 'store'])->name('job.store');
+Route::get('job/{listing}/edit', [postJobController::class, 'edit'])->name('job.edit');
+Route::put('job/{if}/edit', [postJobController::class, 'update'])->name('job.update');
+Route::get('job', [postJobController::class, 'index'])->name('job.index');
 
-Route::delete('job/{id}/delete', [postJobController::class, 'destory'])->name('job.delete')->middleware(isPremiumUser::class);
+Route::delete('job/{id}/delete', [postJobController::class, 'destory'])->name('job.delete');

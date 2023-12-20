@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\isPremiumUser;
 use App\Http\Requests\jobEditFormRequest;
 use App\Http\Requests\jobPostFormRequest;
 use App\Models\Listing;
@@ -17,6 +18,7 @@ class postJobController extends Controller
     {
         $this->job = $job;
         $this->midddleware('auth');
+        $this->middleware(isPremiumUser::class->only(['create', 'store']));
     }
     public function index()
     {
