@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use app\Models\User;
 // use App\Http\Requests\SeekerRegisterationRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
@@ -99,6 +100,25 @@ public function  profile()
 public function seekerProfile()
 {
     return view('seeker.profile');
+}
+
+public function changePassword(Request $request)
+{
+    $request->validate([
+        'current_password' => 'required',
+        'password' => 'required|min:8|confirmed',
+
+    ]);
+
+    $user = auth()->user();
+    if(!Hash::check($request->current_password, $user->password)) {
+        return back()->with('error', 'Current password is incorrect');
+
+    }
+    $user->password = Hash::make($request->password);
+    $user->save();
+
+    return back()->with('success', 'Your password has been updated successfully');
 }
 
 public function update(Request $request)

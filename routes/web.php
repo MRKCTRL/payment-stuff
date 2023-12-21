@@ -60,6 +60,9 @@ Route::post('/logout', [userController::class, 'logout'])->name('logout');
 
 Route::get('user/profile/seeker', [userController::class, 'seekerProfile'])->name('seeker.profile')->middleware('auth');
 
+Route::post('user/password', [userController::class, 'changePassword'])->name('user.password')->middleware('auth');
+
+
 Route::get('user/profile', [userController::class, 'profile'])->name('user.profile')->middleware('auth');
 Route::post('user/profile', [userController::class, 'update'])->name('user.update.profile')->middleware('auth');
 // Route::post('/dashboard', [DashboardController::class, 'index'])
