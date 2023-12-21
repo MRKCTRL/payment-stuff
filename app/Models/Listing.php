@@ -20,4 +20,10 @@ class Listing extends Model
         'feature image',
         'slug'
     ]; 
+    public function users()
+    {
+        return $this->belongsToMany(User::class)
+        ->withPivot('shortlisted')
+        ->withTimeStamps();
+    }
 }
