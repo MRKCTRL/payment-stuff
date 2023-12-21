@@ -120,6 +120,19 @@ public function changePassword(Request $request)
 
     return back()->with('success', 'Your password has been updated successfully');
 }
+public function uploadResume(Request $request){
+    $this->validate($request, [
+        'resume' => 'requred|mimes:pdf,doc,docx',
+    ]);
+
+    if($request->hasFile('resume')) {
+           $resume= $request->file('resume')->store('resume', 'public');
+
+            User::find(auth()->user->id)->update(['resume' => $resume]);
+             return back()->with('success',  'Your resume has been uploaded successfully');
+
+        }
+}
 
 public function update(Request $request)
 {
