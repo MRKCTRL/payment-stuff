@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\shortListMail;
 use App\Models\Listing;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+
 
 class applicantController extends Controller
 {
@@ -23,5 +27,18 @@ class applicantController extends Controller
         return view('applicants.show', compact('listing'));
 
     }
+    public function shortlist($listingId, $userId)
+    {
+        $listing = Listing::find($listingId);
+        $user = User::find($userId);
+        if($listing) {
+            $listing->users()->updateExistingPivot($userId,['shortlisted' => true]);
+            Mail::to($user->email)->queue(new shortListMail($user->name, $listing->title));
+
+            return back()->with('success', 'User is shortlisted successfully');
+        }
+        return back();
+    }
+
 }
  

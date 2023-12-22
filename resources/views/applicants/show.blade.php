@@ -5,9 +5,12 @@
 <div class="row">
     <div class="col-md-8 mt-5">
 <h2>{{listing->title}}</h2>
+@if(Session::has('success'))
+<div class="alert alert-success">{{Session::get('success')}}</div>
+@endif
         </div>
         @foreach($listing->users as $user)
-        <div class="card mt-5">
+        <div class="card mt-5 {{$user->pivot->shortlisted?'card-bg' : ''}}">
 <div class="row g-0">
 
     <div class="col-aut">
@@ -35,12 +38,21 @@
         </div>
         Name: {{$user->name}}
         E-mail: {$user->email}
-        <p></p>
-        <a href="{{Storage::url($user->resume)}}" target="_blank">Download Resume</a>
-
+        <form action="{{route('applicant.shortlist', [$listing->id,$user->id])}}" method="POST">@csrf
+            <a href="{{Storage::url($user->resume)}}" target="_blank">Download Resume</a>
+</form>
+<button type="submit" class="{{$user->pivot->shortlisted ? 'btn btn-success' : 'btn btn-dark'}}">
+{{$user->pivot->shortlisted ? 'Shortlisted' : 'Shortlist'}}</button>
         @endforreach
         
         </div>
 </div>
+<style>
+.card-bg {
+    background-color: aquamarine;
+    
+}
 
+
+</style>
 @endsection
