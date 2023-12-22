@@ -32,7 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function listings()
     { 
-        return $this->belongsToMany(Listing::class)
+        return $this->belongsToMany(Listing::class, 'lister_user', 'user_id', 'listing_id')
         ->withPivot('shortlisted')
         ->withTimestamps();
     }
