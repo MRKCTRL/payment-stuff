@@ -20,8 +20,8 @@
                         <small class="ml-1">{{job->address}}</small>
                     </div>
                     <div class="d-flex justify-content-between mt-3">
-                        <span>ZAR{{number_formt($job->salary,2)}}</span>
-                       <a href="{{$job->slug}}"> <button class="btn btn-sm btn-outline-dark">Apply</button> </a>
+                        <span>ZAR{{number_format($job->salary,2)}}</span>
+                       <a href="{{route('job.show', [$job->slug])}}"> <button class="btn btn-sm btn-outline-dark">Apply</button> </a>
                     </div>
                 </div>
             </div>

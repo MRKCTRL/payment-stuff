@@ -29,6 +29,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 */
 
 Route::get('/', [jobListingController::class, 'index']);
+route::get('/jobs/{listings:slig}', [jobListingController::class,'show'])->name('job.show');
 
 // Route::get('/users',[testContoller::class, 'index']);
 // Route::get('/contact', [contactController::class, 'index']);
