@@ -22,6 +22,10 @@ class applicantController extends Controller
     }
 
     public function show(Listing $listings){
+        $this->authorize('view', $listings);
+        // if($listings->user_id != auth()->id()) {
+        //     abort(403);
+        // }
         $listing = Listing::with('users')->where('sluf',$listings->slug)->first();
 
         return view('applicants.show', compact('listing'));

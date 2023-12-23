@@ -3,6 +3,7 @@
 use App\Http\Controllers\applicantController;
 use App\Http\Controllers\contactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\jobListingController;
 use App\Http\Controllers\postJobController;
 use App\Http\Controllers\subscriptionController;
 use Illuminate\Support\Facades\Route;
@@ -27,9 +28,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [jobListingController::class, 'index']);
 
 // Route::get('/users',[testContoller::class, 'index']);
 // Route::get('/contact', [contactController::class, 'index']);
