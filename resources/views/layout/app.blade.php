@@ -28,12 +28,23 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav" ms-auto>
         <a class="nav-link active" aria-current="page" href="/">Home</a>
+        <li class="nav-item">
+          <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{Storage::url( auth()->user()->profile_pic ?? '')}}" width="40" class="rounded-circle" alt="">
+          </button>
+          <ul class="dropdown-menu">
+            <div class="navbar-nav" ms-auto>
+              <a class="nav-link active" aria-current="page" href="{{route('seeker.profile')}}">Profile</a>
+               <div class="navbar-nav" ms-auto>
+                <a class="nav-link" id="logout" href="{{route('create.employer')}}">Employer</a>
+                <a class="nav-link" aria-disabled="true">logout</a>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
          <div class="navbar-nav" ms-auto>
-          @if(Auth::check())
-           <div class="navbar-nav" ms-auto>
-        <a class="nav-link active" aria-current="page" href="{{route('seeker.profile')}}">Profile</a>
-         <div class="navbar-nav" ms-auto>
-          @endif
+          
+         <div  class="navbar-nav" ms-auto>
+        
        
           @if(!Auth::check())
         <a class="nav-link" href="{{route('login')}}}">login</a>

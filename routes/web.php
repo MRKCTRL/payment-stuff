@@ -104,4 +104,4 @@ Route::get('applicants/{listings:slug}', [applicantController::class, 'show'])->
 
 Route::post('shortlist/{listingId}/{userId}', [applicantController::class, 'shortlist'])
 ->name('applicant.shortlist');
-Route::post('/application/{listingId}/submit', [applicantController::class.'applying'])->name('applicantion.submit');
+Route::post('/application/{listingId}/submit', [applicantController::class.'apply'])->name('applicantion.submit');

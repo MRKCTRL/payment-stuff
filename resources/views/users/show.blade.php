@@ -8,6 +8,11 @@ div class="container">
         <img src="{{Storage::url($listing->feature_image)}}" class="card-img-top" alt="Cover Image" style="height: 150px; object-fit: cover;">
         <div class="card-body">
           <h2 class="card-title">{{$listing->title}}</h2>
+          @if(Session::has('success'))
+          <div class="alert alert-succes">
+            {{Session::get('success')}}
+          </div>
+          @endif
           <span class="badge bg-primary">{{$listing->job_type}}</span>
           <p>Salary: ZAR{{number_format($listing->salary,2)}} </p>
           <p>Address: {{$listing->address}} </p>
@@ -18,13 +23,19 @@ div class="container">
             {!!$listing->roles!!}
           
           <p class="card-text mt-4">Application closing date:{{$listing->application_close_date}}</p>
-          @if($listing->profile->resume)
-          <a href="#" class="btn btn-primary mt-3">Apply Now</a>
+          @if(auth::check())
+          @if(auth()->user()->resume)
+          <form action="{{route('applicantion.submit',[$listing->id])}}"method="POST">@csrf
+          <button href="#" class="btn btn-primary mt-3">Apply Now</button>
+          </form>
           @else 
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Apply
           </button>
 
+          @endif
+          @else
+          <p>Please login to apply</p>
           @endif
          
           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
