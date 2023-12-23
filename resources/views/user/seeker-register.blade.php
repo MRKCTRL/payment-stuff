@@ -16,7 +16,7 @@
 <div class="col-md-6">
     <div class="card" id="card">
         <div class-header>register</div>
-        <form action="#" id="registionForm" method="post"
+        <form action="#" id="registionForm" method="post"></form>
         <div class="card-body">
             <div class="form-group">
                 <label for="">Full name</label>
