@@ -3,6 +3,7 @@
 use App\Http\Controllers\applicantController;
 use App\Http\Controllers\contactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\fileUploadController;
 use App\Http\Controllers\jobListingController;
 use App\Http\Controllers\postJobController;
 use App\Http\Controllers\subscriptionController;
@@ -31,6 +32,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 Route::get('/', [jobListingController::class, 'index']);
 route::get('/jobs/{listings:slig}', [jobListingController::class,'show'])->name('job.show');
 
+route::post('/resume/upload', [fileUploadController::class, 'store'])->middleware(isPremiumUser::class);
 // Route::get('/users',[testContoller::class, 'index']);
 // Route::get('/contact', [contactController::class, 'index']);
 // Route::get('/contact/store', [contactController::class, 'store']);
