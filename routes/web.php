@@ -29,7 +29,11 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-Route::get('/', [jobListingController::class, 'index']);
+Route::get('/', [jobListingController::class, 'index'])->name('listing.index');
+
+Route::get('/company/{id}', [jobListingController::class, 'company'])->name('company');
+
+
 route::get('/jobs/{listings:slig}', [jobListingController::class,'show'])->name('job.show');
 
 route::post('/resume/upload', [fileUploadController::class, 'store'])->middleware('auth');
@@ -62,6 +66,9 @@ Route::post('/login', [userController::class,'postLogin'])->name('login.post')->
 Route::post('/logout', [userController::class, 'logout'])->name('logout');
 
 Route::get('user/profile/seeker', [userController::class, 'seekerProfile'])->name('seeker.profile')->middleware('auth');
+
+route::get('user/job/applied', [userController::class, 'jobApplied'])->name('job.applied')->middleware(['auth','verified']);
+
 
 Route::post('user/password', [userController::class, 'changePassword'])->name('user.password')->middleware('auth');
 

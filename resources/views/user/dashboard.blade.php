@@ -251,7 +251,8 @@
                                 <div class="col-lg-6 mb-4">
                                     <div class="card bg-primary text-white shadow">
                                         <div class="card-body">
-                                            Primary
+                                            total jobs{{\app\Models\Listing::where('user_id',auth()->id())->count()}}
+                                            <a class="small text-white" href="/job">view</a>
                                             <div class="text-white-50 small">#4e73df</div>
                                         </div>
                                     </div>
@@ -259,7 +260,8 @@
                                 <div class="col-lg-6 mb-4">
                                     <div class="card bg-success text-white shadow">
                                         <div class="card-body">
-                                            Success
+                                            profile
+                                            <a class="small text-white stretched-link" href="/user/profile">view</a>
                                             <div class="text-white-50 small">#1cc88a</div>
                                         </div>
                                     </div>
@@ -267,19 +269,20 @@
                                 <div class="col-lg-6 mb-4">
                                     <div class="card bg-info text-white shadow">
                                         <div class="card-body">
-                                            Info
+                                           plan ({{\App\models\User::where('id',auth()->id())->first()->plan}})
                                             <div class="text-white-50 small">#36b9cc</div>
+                                            <a class="small text-white">view</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 mb-4">
+                                {{-- <div class="col-lg-6 mb-4">
                                     <div class="card bg-warning text-white shadow">
                                         <div class="card-body">
                                             Warning
                                             <div class="text-white-50 small">#f6c23e</div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-lg-6 mb-4">
                                     <div class="card bg-danger text-white shadow">
                                         <div class="card-body">

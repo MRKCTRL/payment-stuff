@@ -21,7 +21,7 @@
   <!-- Navbar content -->
 {{--  --}}
   <div class="container">
-    <a class="navbar-brand" href="#">Jobify</a>
+    <a class="navbar-brand" href="/">Jobify</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -35,7 +35,8 @@
           <ul class="dropdown-menu">
             <div class="navbar-nav" ms-auto>
               <a class="nav-link active" aria-current="page" href="{{route('seeker.profile')}}">Profile</a>
-               <div class="navbar-nav" ms-auto>
+              <a class="nav-link active" aria-current="page" href="{{route('job.applied')}}">jobs applied</a> 
+              <div class="navbar-nav" ms-auto>
                 <a class="nav-link" id="logout" href="{{route('create.employer')}}">Employer</a>
                 <a class="nav-link" aria-disabled="true">logout</a>
             <li><a class="dropdown-item" href="#">Something else here</a></li>

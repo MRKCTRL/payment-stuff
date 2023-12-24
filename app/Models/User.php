@@ -37,6 +37,12 @@ class User extends Authenticatable implements MustVerifyEmail
         ->withTimestamps();
     }
 
+
+    public function jobs()
+    {
+        return $this->hasMany(Listing::class,'user_id', 'id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
